@@ -9,7 +9,7 @@ void draw(){
     for(int k=0;k<height;k++){
       float offx=i*0.02;
       float offy=k*0.02;
-      pixels[i+k*width]=color(noise(offx,offy,offz)*255);
+      pixels[i+k*width]=color(noise(offx,offy,offz)*255,0,0);
       offz+=0.00001;
   }
   }
