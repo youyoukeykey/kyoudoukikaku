@@ -1,6 +1,5 @@
 class player extends people{
   anim[] walk=new anim[4];//上は１、右は２、下は３、左は４
-  anim[] run=new anim[4];
   int fcount;
   player(){
     hp=10;
@@ -11,12 +10,9 @@ class player extends people{
     x=0;
     y=0;
     direction=3;
-    final int wh=16;
+    final int wh=32;
     for(int i=0;i<4;i++){
-        walk[i]=new anim(loadImage("cloakandleather.png"),0,i*wh,32,16,2,false);
-    }
-    for(int i=0;i<4;i++){
-       run[i]=new anim(loadImage("cloakandleather.png"),0,(i+4)*wh,64,16,4,false);
+        walk[i]=new anim(loadImage("character.png"),0,i*wh,64,32,4,false);
     }
   }
   void draw(){
