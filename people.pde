@@ -5,4 +5,5 @@ class people{
   int attack;
   int guard;
   int speed;
+  int direction;
 }
