@@ -46,13 +46,19 @@ class Map {
   int w;//=width/chipSize
   int h;//=height/chipSize
   int x, y;//=0
+  char deap_sea = 0;
+  char sea = 1;
+  char glass = 2;
+  char forest = 3;
+  char mountain = 4;
+  char crater = 5;
   color[] chipColors={
     color(#130983), //deap_sea
     color(#62AAE3), //sea
     color(#53EA89), //glass
     color(#1CD82A), //forest
     color(#D8BD1C), //mountain
-    color(#D84F1C)  //fire_mouth
+    color(#D84F1C)  //crater
   };
   Map(int _chipSize, int _w, int _h, float _x, float _y) {
     chipSize=_chipSize;
@@ -86,26 +92,32 @@ class Map {
   }
   int chipType(int x, int y) {
     float n = noise(x / (float)w, y / (float)h);
-    if(x < 0&&y < 0){
+    if (x < 0&&y < 0) {
       n += 0.04;
-    }else if(x < 0){
+    } else if (x < 0) {
       n += 0.03;
-    }else if(y < 0){
+    } else if (y < 0) {
       n += 0.02;
     }
     int type = 0;
+    /*crater 0.8
+      mountain 0.75
+      forest 0.6
+      glass 0.35
+      sea 0.27
+      deap_sea */
     if (n<0.3) {
-      type = 0;
+      type = deap_sea;
     } else if (n<0.35) {
-      type = 1;
+      type = sea;
     } else if (n>0.8) {
-      type = 5;
+      type = crater;
     } else if (n>0.75) {
-      type=4;
+      type = mountain;
     } else if (n>0.65) {
-      type=3;
+      type = forest;
     } else {
-      type=2;
+      type = glass;
     }
     return type;
   }
