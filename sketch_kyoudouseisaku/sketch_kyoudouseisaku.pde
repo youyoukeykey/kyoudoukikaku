@@ -2,6 +2,8 @@ int chipSize = 16;
 int x, y = 0;
 int w = width / chipSize;
 int h = height / chipSize;
+float px = 100;
+float py = 100;
 Map map;
 void setup() {
   size(1000, 1000);
@@ -9,6 +11,7 @@ void setup() {
   noStroke();
   frameRate(60);
   smooth();
+  map = new  Map(32, width, height, px, py);
 }
 int cx(int x) {
   return x*chipSize;
@@ -16,24 +19,26 @@ int cx(int x) {
 int cy(int y) {
   return y*chipSize;
 }
-float px, py=0;
 void draw() {
   background(255);
-  map = new  Map(32, width, height, px, py);
   map.map_draw();
   /*pushMatrix();
-  translate(px,py);
-  popMatrix();*/
+   translate(px,py);
+   popMatrix();*/
 }
 void keyPressed() {
   if (keyCode==UP) {
     py--;
+    map = new  Map(32, width, height, px, py);
   } else if (keyCode==RIGHT) {
     px++;
+    map = new  Map(32, width, height, px, py);
   } else if (keyCode==DOWN) {
     py++;
+    map = new  Map(32, width, height, px, py);
   } else if (keyCode==LEFT) {
     px--;
+    map = new  Map(32, width, height, px, py);
   }
 }
 class Map {
@@ -81,6 +86,13 @@ class Map {
   }
   int chipType(int x, int y) {
     float n = noise(x / (float)w, y / (float)h);
+    if(x < 0&&y < 0){
+      n += 0.04;
+    }else if(x < 0){
+      n += 0.03;
+    }else if(y < 0){
+      n += 0.02;
+    }
     int type = 0;
     if (n<0.3) {
       type = 0;
