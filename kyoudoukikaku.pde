@@ -4,13 +4,14 @@ void setup(){
   noiseSeed(1);
   size(700,700);
   String  path  =  sketchPath( ) ;
-  println(path);
   p=new player();
+  mapsetup();
 }
 void draw(){
   background(255);
-  p.draw();
-  if(keyPressed){
+  mapdraw(p.x,p.y);
+  //pp.draw();
+  if(keyp==true){
     keysyori();
   }
 }

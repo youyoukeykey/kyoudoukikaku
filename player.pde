@@ -15,9 +15,20 @@ class player extends people{
         walk[i]=new anim(loadImage("character.png"),0,i*wh,64,32,4,false);
     }
   }
+  void draw(int _x,int _y){
+    fcount++;
+    image(walk[direction].get(),_x,_y-chipSize,chipSize,chipSize*2);
+    if(fcount%10==0){
+    if(walk[direction].count+1<walk[direction].flame){
+    walk[direction].count++;
+    }else{
+      walk[direction].count=0;
+    }
+  }
+  }
   void draw(){
     fcount++;
-    image(walk[direction].get(),x,y,32,64);
+    image(walk[direction].get(),x,y-chipSize,chipSize,chipSize*2);
     if(fcount%10==0){
     if(walk[direction].count+1<walk[direction].flame){
     walk[direction].count++;

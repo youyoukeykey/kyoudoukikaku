@@ -18,8 +18,11 @@ void keysyori(){
   }
 }
 void keyPressed(){
+  //mapkeyPressed();
   keyp=true;
+  if(key=='z'){
+  }
 }
 void keyReleased(){
-  
+  keyp=false;
 }

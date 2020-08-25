@@ -18,7 +18,6 @@ class anim{//くっついた画像から読み込むの専用のやつ
     anim=new gazou[flame];
     img=iimg;
     for(int i=0;i<flame;i++){
-      println(sx+(i*w/flame),sy,sx+((i+1)*w/flame),sy+h);
       if(tate){
       anim[i]=new gazou(sx,sy+(i*h/flame),sx+w,sy+((i+1)*h/flame));
       }else{
