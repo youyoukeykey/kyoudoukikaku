@@ -9,7 +9,7 @@ void setup(){
 }
 void draw(){
   background(255);
-  mapdraw(p.x,p.y);
+  mapdraw(p.x,p.y);//これだけで済ませたいよね
   //pp.draw();
   if(keyp==true){
     keysyori();

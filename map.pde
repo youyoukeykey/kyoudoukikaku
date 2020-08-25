@@ -1,3 +1,4 @@
+//まるまるコピペしました。
 final int chipSize = 32;
 int x, y = 0;
 int w = width / chipSize;
@@ -83,16 +84,14 @@ class Map {
         int type = chipType(x -h/2+ ix, y -w/2+ iy);
         fill(chipColors[type]);
         rect(cx(ix), cy(iy), chipSize, chipSize);
-        if(p.x==x -h/2+ ix&&p.y== y -w/2+ iy){
+        if(p.x==x -h/2+ ix&&p.y== y -w/2+ iy){//プレイヤーの位置に四角を描くタイミングで一緒にプレイヤーも描画
           println("a");
           fill(0);
          // rect(cx(ix), cy(iy), chipSize, chipSize);
-          chx=cx(ix);
-          chy=cy(iy);
+              p.draw(cx(ix),cy(iy));
         }
       }
     }
-    p.draw(chx,chy);
   }
   int chipType(int x, int y) {
     float n = noise(x / (float)w, y / (float)h);

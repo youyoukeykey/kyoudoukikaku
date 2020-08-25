@@ -41,6 +41,3 @@ class anim{//くっついた画像から読み込むの専用のやつ
   }
 }
 }
-class direction{
-  int x,y;
-}

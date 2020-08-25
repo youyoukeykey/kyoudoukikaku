@@ -1,3 +1,4 @@
+//キー入力処理はここだけでたりてるはず
 boolean keyp;
 void keysyori(){
    if(keyCode==UP){
