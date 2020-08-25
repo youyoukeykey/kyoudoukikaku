@@ -86,7 +86,7 @@ class Map {
         if(p.x==x -h/2+ ix&&p.y== y -w/2+ iy){
           println("a");
           fill(0);
-          rect(cx(ix), cy(iy), chipSize, chipSize);
+         // rect(cx(ix), cy(iy), chipSize, chipSize);
           chx=cx(ix);
           chy=cy(iy);
         }
