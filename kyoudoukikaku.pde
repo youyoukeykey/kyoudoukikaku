@@ -10,4 +10,7 @@ void setup(){
 void draw(){
   background(255);
   p.draw();
+  if(keyPressed){
+    keysyori();
+  }
 }

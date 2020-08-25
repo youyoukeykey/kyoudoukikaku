@@ -17,7 +17,7 @@ class player extends people{
   }
   void draw(){
     fcount++;
-    image(walk[direction].get(),100,100,320,320);
+    image(walk[direction].get(),x,y,32,64);
     if(fcount%10==0){
     if(walk[direction].count+1<walk[direction].flame){
     walk[direction].count++;
