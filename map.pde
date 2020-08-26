@@ -72,6 +72,14 @@ class Map {
   int icy(int y) {
     return y/chipSize;
   }
+  boolean isblocked(int x,int y){//通行出来なかったらtrue
+  if(chipType(x,y)==deap_sea){
+  return true;
+  }else if(chipType(x,y)==crater){
+    return true;
+  }
+  return false;
+  }
   void map_draw(int _x,int _y) {
     int x, y;//=0
     x=_x;

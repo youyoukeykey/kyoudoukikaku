@@ -3,19 +3,19 @@ boolean keyp;
 void keysyori(){
    if(keyCode==UP){
     p.direction=2;
-    p.y--;
+    p.move(0,-1);
   }
   if(keyCode==RIGHT){
     p.direction=1;
-    p.x++;
+    p.move(1,0);
   }
   if(keyCode==DOWN){
     p.direction=0;
-    p.y++;
+    p.move(0,1);
   }
   if(keyCode==LEFT){
     p.direction=3;
-    p.x--;
+    p.move(-1,0);
   }
 }
 void keyPressed(){

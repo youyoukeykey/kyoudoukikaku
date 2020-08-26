@@ -6,5 +6,12 @@ class people{//継承という仕組みを用いてこれからステータス�
   int guard;
   int speed;
   int direction;
-  
+  boolean move(int nx,int ny){
+    if(!map.isblocked(x+nx,y+ny)){
+      x+=nx;
+      y+=ny;
+      return true;
+    }
+    return false;
+  }
 }
