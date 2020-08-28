@@ -92,10 +92,17 @@ class Map {
         fill(chipColors[type]);
         rect(cx(ix), cy(iy), chipSize, chipSize);
         if(p.x==x -h/2+ ix&&p.y== y -w/2+ iy){//プレイヤーの位置に四角を描くタイミングで一緒にプレイヤーも描画
-          println("a");
+          //println("a");
           fill(0);
          // rect(cx(ix), cy(iy), chipSize, chipSize);
            p.draw(cx(ix),cy(iy));
+        }
+        for(int i=0;i<teki.size();i++){
+          enemy t=teki.get(i);
+          if(t.enemypos.x==x -h/2+ ix&&t.enemypos.y== y -w/2+ iy){
+            fill(255,255,0);
+            rect(cx(ix), cy(iy), chipSize, chipSize);
+          }
         }
       }
     }
