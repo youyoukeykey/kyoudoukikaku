@@ -28,7 +28,6 @@ class player extends people{//プレイヤー
   }
   void draw(int _x,int _y){//座標指定あり描画
     fcount++;
-    
     image(walk[direction].get(),_x,_y-chipSize,chipSize,chipSize*2);
     if(fcount%10==0){
     if(walk[direction].count+1<walk[direction].flame){
