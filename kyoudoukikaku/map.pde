@@ -1,24 +1,33 @@
 //まるまるコピペしました。
 final int chipSize = 32;
 PImage images;
-int x, y = 0;
+int x=0,y=0;
 int w = width / chipSize;
 int h = height / chipSize;
 float px = 100;
 float py = 100;
+char maps = 0;
+char ops = 1;
 Map map;
+Map op;
 void mapsetup() {
   background(255);
   noStroke();
   frameRate(60);
   smooth();
-  map = new  Map(chipSize, width, height);
+  map = new  Map(chipSize, width, height, ops);
+  op = new Map(chipSize, width, height, ops);
 }
 int cx(int x) {
   return x*chipSize;
 }
 int cy(int y) {
   return y*chipSize;
+}
+void opdraw(int x, int y) {
+  background(255);
+  op.map_draw((int)x, (int)y);
+  println("op");
 }
 void mapdraw(int x, int y) {
   background(255);
@@ -42,6 +51,13 @@ class Map {
   int chipSize;//=32
   int w;//=width/chipSize
   int h;//=height/chipSize
+  int ix, iy;
+  int[] op_images_y;
+  int[][] op_nf;
+  int[][] types;
+  char MaOf;
+  char count=0;
+  char df=0;
   char deap_sea = 0;
   char sea = 1;
   char glass = 2;
@@ -64,10 +80,20 @@ class Map {
     color(#D8BD1C), //mountain
     color(#D84F1C)  //crater
   };
-  Map(int _chipSize, int _w, int _h) {
+  Map(int _chipSize, int _w, int _h, char _MaOf) {
     chipSize=_chipSize;
     w=_w/chipSize;
     h=_h/chipSize;
+    MaOf = _MaOf;
+    op_images_y = new int[h+1];
+    op_nf = new int[w+1][h+1];
+    types = new int[w+1][h+1];
+    for (int iy=0; iy<=h; iy++) {
+      op_images_y[iy]=0;
+      for (int ix=0; ix<=w; ix++) {
+        op_nf[ix][iy]=0;
+      }
+    }
   }
   int cx(int x) {
     return x*chipSize;
@@ -98,22 +124,73 @@ class Map {
     for (int iy=0; iy<=h; iy++) {
       for (int ix=0; ix<=w; ix++) {
         int type = chipType(x -h/2+ ix, y -w/2+ iy);
-        //fill(chipColors[type]);
-        //rect(cx(ix), cy(iy), chipSize, chipSize);
-        image(images[type], (float)cx(ix), (float)cy(iy), (float)chipSize, (float)chipSize);
-        if (p.x==x -h/2+ ix&&p.y== y -w/2+ iy) {//プレイヤーの位置に四角を描くタイミングで一緒にプレイヤーも描画
-          //println("a");
-          fill(0);
-          // rect(cx(ix), cy(iy), chipSize, chipSize);
-          p.draw(cx(ix), cy(iy));
+        types[ix][iy]=type;
+        if (MaOf == 0) {//map
+          //fill(chipColors[type]);
+          //rect(cx(ix), cy(iy), chipSize, chipSize);
+          image(images[type], (float)cx(ix), (float)cy(iy), (float)chipSize, (float)chipSize);
+          if (p.x==x -h/2+ ix&&p.y== y -w/2+ iy) {//プレイヤーの位置に四角を描くタイミングで一緒にプレイヤーも描画
+            //println("a");
+            fill(0);
+            // rect(cx(ix), cy(iy), chipSize, chipSize);
+            p.draw(cx(ix), cy(iy));
+          }
+          for (int i=0; i<teki.size(); i++) {
+            enemy t=teki.get(i);
+            if (t.enemypos.x==x -h/2+ ix&&t.enemypos.y== y -w/2+ iy) {
+              fill(255, 255, 0);
+              //rect(cx(ix), cy(iy), chipSize, chipSize);
+            }
+          }
+        } else if (MaOf == 1) {//op
+          if (count==0) {
+            char n = (char)random(2);
+            op_nf[ix][iy]=n;
+          }
+          if (op_nf[ix][iy] == 0) {
+            image(images[types[ix][iy]], (float)cx(ix), (float)cy(iy), (float)chipSize, (float)chipSize);
+          } /*else if (n == 1) {
+           image(images[type], (float)cx(ix), (float)cy(op_images_y[iy]), (float)chipSize, (float)chipSize);
+           println("n == 1");
+           if (op_images_y[iy]<iy) {
+           op_images_y[iy]+=1;
+           }
+           }*/
         }
-        for (int i=0; i<teki.size(); i++) {
-          enemy t=teki.get(i);
-          if (t.enemypos.x==x -h/2+ ix&&t.enemypos.y== y -w/2+ iy) {
-            fill(255, 255, 0);
-            //rect(cx(ix), cy(iy), chipSize, chipSize);
+      }
+    }
+    if (MaOf == 1) {
+      op_drop();
+      count++;
+    }
+  }
+  void op_drop() {
+    if(keyPressed){
+      if(key=='z'){
+        MaOf=0;
+      }
+    }
+    if (df == 0) {
+      for (int iiy=0; iiy<=h; iiy++) {
+        for (int iix=0; iix<=w; iix++) {
+          if (op_nf[iix][iiy]==1) {
+            ix = iix;
+            iy = iiy;
+            df = 1;
+            break;
           }
         }
+      }
+    } else if (df == 1) {
+      image(images[types[ix][iy]], (float)cx(ix), (float)cy(op_images_y[iy]), (float)chipSize, (float)chipSize);
+      if (op_images_y[iy]<=iy) {
+        op_images_y[iy]++;
+      } else {
+        op_nf[ix][iy]=0;
+        op_images_y[iy]=0;
+        ix=0;
+        iy=0;
+        df = 0;
       }
     }
   }
