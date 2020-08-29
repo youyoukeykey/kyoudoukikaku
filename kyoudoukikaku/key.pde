@@ -22,6 +22,7 @@ void keyPressed(){
   //mapkeyPressed();
   keyp=true;
   if(key=='z'){
+    p.attacking=true;
   }
 }
 void keyReleased(){

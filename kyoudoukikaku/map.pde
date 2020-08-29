@@ -111,7 +111,7 @@ class Map {
           enemy t=teki.get(i);
           if (t.enemypos.x==x -h/2+ ix&&t.enemypos.y== y -w/2+ iy) {
             fill(255, 255, 0);
-            rect(cx(ix), cy(iy), chipSize, chipSize);
+            //rect(cx(ix), cy(iy), chipSize, chipSize);
           }
         }
       }
