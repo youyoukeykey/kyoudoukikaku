@@ -5,6 +5,7 @@ class enemy {
   int tate;
   boolean move;
   boolean oikake;
+  int hp;
   enemy() {
     yoko=20;
     tate=20;
@@ -18,19 +19,19 @@ class enemy {
         houkou=int(random(4));
         switch(houkou) {
         case 0:
-          enemypos.y+=32;
+          enemypos.y+=1;
 
           break;
         case 1:
-          enemypos.x+=32;
+          enemypos.x+=1;
 
           break;
         case 2:
-          enemypos.y-=32;
+          enemypos.y-=1;
 
           break;
         case 3:
-          enemypos.x-=32;
+          enemypos.x-=1;
 
           break;
         }
@@ -63,18 +64,18 @@ class enemy {
     } else {
       //oikake
       if (enemypos.x<p.x) {
-        enemypos.x+=1;
+        enemypos.x+=0.1;
       } else if (enemypos.x>p.x) {
-        enemypos.x-=1;
+        enemypos.x-=0.1;
       }
       if (enemypos.y<p.y) {
-        enemypos.y+=1;
+        enemypos.y+=0.1;
       } else if (enemypos.y>p.y) {
-        enemypos.y-=1;
+        enemypos.y-=0.1;
       }
       //oikake=false;
     }
     //rect(enemypos.x, enemypos.y, 32, 32);
-    println(enemypos.x,enemypos.y);
+    //println(p.x,p.y,enemypos.x,enemypos.y);
   }
 }

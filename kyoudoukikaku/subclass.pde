@@ -1,7 +1,11 @@
 class sub{
   //hello
 }
-
+class damageanim{
+  
+}
+class effectanim{
+}
 class anim{//くっついた画像から読み込むの専用のやつ
   gazou[] anim;
   int count=0;
