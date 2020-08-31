@@ -11,7 +11,7 @@ void setup(){
   enemy e=new enemy();
   e.enemypos.x=10;
   e.enemypos.y=10;
-  //teki.add(e);
+  teki.add(e);
 }
 void draw(){
   background(255);

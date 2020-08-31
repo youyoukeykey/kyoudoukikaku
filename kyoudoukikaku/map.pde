@@ -1,7 +1,7 @@
 //まるまるコピペしました。
 final int chipSize = 32;
 PImage images;
-int x=0,y=0;
+int x=0, y=0;
 int w = width / chipSize;
 int h = height / chipSize;
 float px = 100;
@@ -119,7 +119,7 @@ class Map {
     int x, y;
     x=0;
     y=0;//=0
-    println("aaa",x,_x,y,_y);
+    println("aaa", x, _x, y, _y);
     x=floor(_x);
     y=floor(_y);
     float offsetx=x-(_x);
@@ -138,7 +138,7 @@ class Map {
             //println("a");
             fill(0);
             // rect(cx(ix), cy(iy), chipSize, chipSize);
-           // p.draw(cx(ix), cy(iy));
+            // p.draw(cx(ix), cy(iy));
           }
         } else if (MaOf == 1) {//op
           if (count==0) {
@@ -157,22 +157,25 @@ class Map {
         }
       }
     }
-    p.draw((p.x-x+w/2)*chipSize+offsetx*chipSize, (p.y-y+h/2)*chipSize+offsety*chipSize);
-    for (int i=0; i<teki.size(); i++) {
-            enemy t=teki.get(i);
-            if (dist(t.enemypos.x,t.enemypos.y,x,y)<=100) {
-              fill(255, 255, 0);
-              rect((t.enemypos.x-x+w/2)*chipSize+offsetx*chipSize, (t.enemypos.y-y+h/2)*chipSize+offsety*chipSize, chipSize, chipSize);
-        }
-     }
+
+
     if (MaOf == 1) {
       op_drop();
       count++;
+    } else {//プレイやー、敵の描画
+      p.draw((p.x-x+w/2)*chipSize+offsetx*chipSize, (p.y-y+h/2)*chipSize+offsety*chipSize);
+      for (int i=0; i<teki.size(); i++) {
+        enemy t=teki.get(i);
+        if (dist(t.enemypos.x, t.enemypos.y, x, y)<=100) {
+          fill(255, 255, 0);
+          rect((t.enemypos.x-x+w/2)*chipSize+offsetx*chipSize, (t.enemypos.y-y+h/2)*chipSize+offsety*chipSize, chipSize, chipSize);
+        }
+      }
     }
   }
   void op_drop() {
-    if(keyPressed){
-      if(key=='z'){
+    if (keyPressed) {
+      if (key=='z') {
         MaOf=0;
       }
     }

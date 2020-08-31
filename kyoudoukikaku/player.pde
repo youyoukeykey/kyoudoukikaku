@@ -25,7 +25,8 @@ class player extends people{//プレイヤー
      attackanim[1]=attackanim[2];
      attackanim[2]=m;
   }
-  void draw(float _x,float _y){//座標指定あり描画
+  void draw(float _x,float _y){//座標指定あり描画、処理
+  knockback();
   int attackd=0;
     fcount++;
     if(attacking){

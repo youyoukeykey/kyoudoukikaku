@@ -5,6 +5,8 @@ class people{//継承という仕組みを用いてこれからステータス�
   int attack;
   int guard;
   int speed;
+  float hx=0;
+  float hy=0;
   int direction;
   boolean move(float nx,float ny){
     int hx=(int)(nx/abs(nx));
@@ -17,6 +19,17 @@ class people{//継承という仕組みを用いてこれからステータス�
     }
     println("blocked");
     return false;
+  }
+  void knockback(){
+    move(hx,hy);
+    hx*=0.7;
+    hy*=0.7;
+    if(hx<=0.3){
+      hx=0;
+    }
+    if(hy<=0.3){
+      hy=0;
+    }
   }
   void attack(){
   }

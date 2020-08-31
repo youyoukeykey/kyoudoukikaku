@@ -6,33 +6,48 @@ class enemy {
   boolean move;
   boolean oikake;
   int hp;
+  int fc;
+  int hx=0;//ノックバックｘ
+  int hy=0;//ノックバックｙ
   enemy() {
     yoko=20;
     tate=20;
     enemypos=new PVector(32*int(random(yoko))+1, 32*int(random(tate))+1);
-    move=false;
-    oikake=true;
+    move=true;
+    oikake=false;
+  }
+  void knockback(){
+    enemypos.x+=hx;
+    enemypos.y+=hy;
+    hx*=0.7;
+    hy*=0.7;
+    if(hx<=0.3){
+      hx=0;
+    }
+    if(hy<=0.3){
+      hy=0;
+    }
   }
   void run() {
+    knockback();
     if (oikake==false) {
       if (move==true) {
+        fc++;
+        if(fc%100==0){
         houkou=int(random(4));
+        }
         switch(houkou) {
         case 0:
-          enemypos.y+=1;
-
+          enemypos.y+=0.1;
           break;
         case 1:
-          enemypos.x+=1;
-
+          enemypos.x+=0.1;
           break;
         case 2:
-          enemypos.y-=1;
-
+          enemypos.y-=0.1;
           break;
         case 3:
-          enemypos.x-=1;
-
+          enemypos.x-=0.1;
           break;
         }
       } else {
