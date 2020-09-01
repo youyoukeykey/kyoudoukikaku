@@ -1,5 +1,6 @@
 //まるまるコピペしました。
 final int chipSize = 32;
+
 PImage images;
 PImage title;
 int x=0, y=0;
@@ -18,6 +19,8 @@ void mapsetup() {
   smooth();
   map = new  Map(chipSize, width, height, ops);
   op = new Map(chipSize, width, height, ops);
+  textAlign(CENTER,TOP);
+  textSize(50);
 }
 int cx(int x) {
   return x*chipSize;
@@ -64,6 +67,7 @@ class Map {
   char forest = 3;
   char mountain = 4;
   char crater = 5;
+  String press = "Press Z Key to Start";
   PImage[] images={
     loadImage("deap_sea.png"), 
     loadImage("sea.png"), 
@@ -198,6 +202,8 @@ class Map {
       }
       if(df == 0){
         image(title,(width - 500)/2,(height-250)/2,500,250);
+        fill(255,0,0);
+        text(press,width/2,height-100);
       }
     } else if (df == 1) {
       image(images[types[ix][iy]], (float)cx(ix), (float)cy(op_images_y[iy]), (float)chipSize, (float)chipSize);
