@@ -54,6 +54,16 @@ class player extends people{//プレイヤー
       }
     }
   }
+  if(attacking){
+    for(int i=0;i<teki.size();i++){
+      enemy e=teki.get(i);
+      if(dist(e.enemypos.x,e.enemypos.y,this.x,this.y)<2){
+        switch(direction){
+          
+        }
+      }
+    }
+  }
   }
   void draw(){//座標指定なし描画
     fcount++;

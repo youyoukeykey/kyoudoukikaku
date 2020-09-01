@@ -12,11 +12,13 @@ class eanim{
   int delete=0;
   void draw(){
   }
+  void draw(float _x,float _y){
+  }
 }
 class damageanim extends eanim{
   float x,y;
   String t;
-  float toumei=0;
+  float toumei=255;
   damageanim(){
   }
   damageanim(float x,float y,String t){
@@ -24,11 +26,11 @@ class damageanim extends eanim{
     this.y=y;
     this.t=t;
   }
-  void draw(){
+  void draw(float _x,float _y){
     fill(0,255,255,toumei);
     textSize(32);//仮
-    text(t,x,y);
-    y-=1;
+    text(t,x*chipSize-(_x),y*chipSize-(_x));
+    y-=0.1;
     toumei-=10;
     if(toumei<0){
       delete=1;

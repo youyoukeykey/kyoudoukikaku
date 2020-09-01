@@ -7,8 +7,9 @@ class enemy {
   boolean oikake;
   int hp;
   int fc;
-  int hx=0;//ノックバックｘ
-  int hy=0;//ノックバックｙ
+  float def=1;
+  float hx=0;//ノックバックｘ
+  float hy=0;//ノックバックｙ
   enemy() {
     yoko=20;
     tate=20;

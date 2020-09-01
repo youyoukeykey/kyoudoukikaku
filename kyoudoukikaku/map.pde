@@ -169,6 +169,10 @@ class Map {
           rect((t.enemypos.x-x+w/2)*chipSize+offsetx*chipSize, (t.enemypos.y-y+h/2)*chipSize+offsety*chipSize, chipSize, chipSize);
         }
       }
+      for(int i=0;i<anims.size();i++){
+        eanim ee=anims.get(i);
+        ee.draw((x-w/2)*chipSize-offsetx*chipSize,(y-h/2)*chipSize-offsety*chipSize);
+      }
     }
   }
   void op_drop() {
