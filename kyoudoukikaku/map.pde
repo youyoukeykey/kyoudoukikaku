@@ -194,6 +194,9 @@ class Map {
           }
         }
       }
+      if(df == 0){
+        print("compleate");
+      }
     } else if (df == 1) {
       image(images[types[ix][iy]], (float)cx(ix), (float)cy(op_images_y[iy]), (float)chipSize, (float)chipSize);
       if (op_images_y[iy]<=iy) {
