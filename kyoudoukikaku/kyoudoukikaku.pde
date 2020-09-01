@@ -2,9 +2,9 @@ String path;
 player p;
 ArrayList<enemy> teki=new ArrayList();
 UI ui;
-void setup(){
+void setup() {
   noiseSeed(1);//a
-  size(700,700);
+  size(700, 700);
   String  path  =  sketchPath( ) ;
   p=new player();
   mapsetup();
@@ -15,17 +15,19 @@ void setup(){
   teki.add(e);
   ui=new UI();
 }
-void draw(){
+void draw() {
   background(255);
-  mapdraw(p.x,p.y);
+  mapdraw(p.x, p.y);
   //pp.draw();
-   for(int i=0;i<teki.size();i++){
-          enemy t=teki.get(i);
-          t.run();
-        }
-  if(keyp==true){
+  for (int i=0; i<teki.size(); i++) {
+    enemy t=teki.get(i);
+    t.run();
+  }
+  if (keyp==true) {
     keysyori();
   }
   animupdate();
-  ui.draw();
+  if (map.MaOf==0) {
+    ui.draw();
+  }
 }

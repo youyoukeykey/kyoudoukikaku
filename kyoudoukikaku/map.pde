@@ -165,7 +165,7 @@ class Map {
         enemy t=teki.get(i);
         if (dist(t.enemypos.x, t.enemypos.y, x, y)<=100) {
           fill(255, 255, 0);
-          rect((t.enemypos.x-x+w/2)*chipSize+offsetx*chipSize, (t.enemypos.y-y+h/2)*chipSize+offsety*chipSize, chipSize, chipSize);//敵の描画
+          image(loadImage("messy.png").get(11,10,23,23),(t.enemypos.x-x+w/2)*chipSize+offsetx*chipSize, (t.enemypos.y-y+h/2)*chipSize+offsety*chipSize, chipSize, chipSize);
         }
       }
       for(int i=0;i<anims.size();i++){
@@ -193,6 +193,9 @@ class Map {
             break;
           }
         }
+      }
+      if(df == 0){
+        print("compleate");
       }
     } else if (df == 1) {
       image(images[types[ix][iy]], (float)cx(ix), (float)cy(op_images_y[iy]), (float)chipSize, (float)chipSize);
