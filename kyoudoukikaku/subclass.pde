@@ -1,7 +1,6 @@
 class sub{
   //hello
 }
-
 class anim{//くっついた画像から読み込むの専用のやつ
   gazou[] anim;
   int count=0;

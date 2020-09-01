@@ -4,6 +4,7 @@ class player extends people{//プレイヤー
   anim[] nowanim;
   int fcount;
   boolean attacking;
+  int flamec=10;
   player(){//ここはまだfeeling
     hp=10;
     mp=10;
@@ -25,7 +26,8 @@ class player extends people{//プレイヤー
      attackanim[1]=attackanim[2];
      attackanim[2]=m;
   }
-  void draw(int _x,int _y){//座標指定あり描画
+  void draw(float _x,float _y){//座標指定あり描画、処理
+  knockback();
   int attackd=0;
     fcount++;
     if(attacking){
@@ -35,10 +37,12 @@ class player extends people{//プレイヤー
     }
     if(attacking){
       image(nowanim[direction].get(),_x-chipSize/2,_y-chipSize,chipSize*2,chipSize*2);
+      flamec=3;
     }else{
     image(nowanim[direction].get(),_x,_y-chipSize,chipSize,chipSize*2);
+    flamec=10;
     }
-    if(fcount%10==0){
+    if(fcount%flamec==0){
     if(nowanim[direction].count+1<nowanim[direction].flame){
     nowanim[direction].count++;
     }else{

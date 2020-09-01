@@ -15,7 +15,7 @@ void setup(){
 }
 void draw(){
   background(255);
-  mapdraw(p.x,p.y);//これだけで済ませたいよね
+  mapdraw(p.x,p.y);
   //pp.draw();
    for(int i=0;i<teki.size();i++){
           enemy t=teki.get(i);
@@ -24,4 +24,5 @@ void draw(){
   if(keyp==true){
     keysyori();
   }
+  animupdate();
 }

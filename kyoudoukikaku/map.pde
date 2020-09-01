@@ -1,7 +1,7 @@
 //まるまるコピペしました。
 final int chipSize = 32;
 PImage images;
-int x=0,y=0;
+int x=0, y=0;
 int w = width / chipSize;
 int h = height / chipSize;
 float px = 100;
@@ -29,9 +29,9 @@ void opdraw(int x, int y) {
   op.map_draw((int)x, (int)y);
   println("op");
 }
-void mapdraw(int x, int y) {
+void mapdraw(float x, float y) {
   background(255);
-  map.map_draw((int)x, (int)y);
+  map.map_draw(x, y);
   /*pushMatrix();
    translate(px,py);
    popMatrix();*/
@@ -95,16 +95,16 @@ class Map {
       }
     }
   }
-  int cx(int x) {
+  float cx(int x) {
     return x*chipSize;
   }
-  int cy(int y) {
+  float cy(int y) {
     return y*chipSize;
   }
-  int icx(int x) {
+  float icx(int x) {
     return x/chipSize;
   }
-  int icy(int y) {
+  float icy(int y) {
     return y/chipSize;
   }
   boolean isblocked(int x, int y) {//通行出来なかったらtrue
@@ -115,10 +115,15 @@ class Map {
     }
     return false;
   }
-  void map_draw(int _x, int _y) {
-    int x, y;//=0
-    x=_x;
-    y=_y;
+  void map_draw(float _x, float _y) {
+    int x, y;
+    x=0;
+    y=0;//=0
+    println("aaa", x, _x, y, _y);
+    x=floor(_x);
+    y=floor(_y);
+    float offsetx=x-(_x);
+    float offsety=y-(_y);
     noiseSeed(100);
     noStroke();
     for (int iy=0; iy<=h; iy++) {
@@ -128,19 +133,12 @@ class Map {
         if (MaOf == 0) {//map
           //fill(chipColors[type]);
           //rect(cx(ix), cy(iy), chipSize, chipSize);
-          image(images[type], (float)cx(ix), (float)cy(iy), (float)chipSize, (float)chipSize);
+          image(images[type], (float)cx(ix)+offsetx*chipSize, (float)cy(iy)+offsety*chipSize, (float)chipSize, (float)chipSize);
           if (p.x==x -h/2+ ix&&p.y== y -w/2+ iy) {//プレイヤーの位置に四角を描くタイミングで一緒にプレイヤーも描画
             //println("a");
             fill(0);
             // rect(cx(ix), cy(iy), chipSize, chipSize);
-            p.draw(cx(ix), cy(iy));
-          }
-          for (int i=0; i<teki.size(); i++) {
-            enemy t=teki.get(i);
-            if (t.enemypos.x==x -h/2+ ix&&t.enemypos.y== y -w/2+ iy) {
-              fill(255, 255, 0);
-              //rect(cx(ix), cy(iy), chipSize, chipSize);
-            }
+            // p.draw(cx(ix), cy(iy));
           }
         } else if (MaOf == 1) {//op
           if (count==0) {
@@ -162,11 +160,20 @@ class Map {
     if (MaOf == 1) {
       op_drop();
       count++;
+    } else {//プレイやー、敵の描画
+      p.draw((p.x-x+w/2)*chipSize+offsetx*chipSize, (p.y-y+h/2)*chipSize+offsety*chipSize);
+      for (int i=0; i<teki.size(); i++) {
+        enemy t=teki.get(i);
+        if (dist(t.enemypos.x, t.enemypos.y, x, y)<=100) {
+          fill(255, 255, 0);
+          rect((t.enemypos.x-x+w/2)*chipSize+offsetx*chipSize, (t.enemypos.y-y+h/2)*chipSize+offsety*chipSize, chipSize, chipSize);
+        }
+      }
     }
   }
   void op_drop() {
-    if(keyPressed){
-      if(key=='z'){
+    if (keyPressed) {
+      if (key=='z') {
         MaOf=0;
       }
     }
@@ -184,7 +191,7 @@ class Map {
     } else if (df == 1) {
       image(images[types[ix][iy]], (float)cx(ix), (float)cy(op_images_y[iy]), (float)chipSize, (float)chipSize);
       if (op_images_y[iy]<=iy) {
-        op_images_y[iy]++;
+        op_images_y[iy]+=5;
       } else {
         op_nf[ix][iy]=0;
         op_images_y[iy]=0;
