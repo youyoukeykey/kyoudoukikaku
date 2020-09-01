@@ -7,7 +7,7 @@ class enemy {
   boolean oikake;
   int hp;
   int fc;
-  float def=1;
+  int def=1;
   float hx=0;//ノックバックｘ
   float hy=0;//ノックバックｙ
   enemy() {
@@ -39,16 +39,16 @@ class enemy {
         }
         switch(houkou) {
         case 0:
-          enemypos.y+=0.1;
+          enemypos.y+=0.01;
           break;
         case 1:
-          enemypos.x+=0.1;
+          enemypos.x+=0.01;
           break;
         case 2:
-          enemypos.y-=0.1;
+          enemypos.y-=0.01;
           break;
         case 3:
-          enemypos.x-=0.1;
+          enemypos.x-=0.01;
           break;
         }
       } else {

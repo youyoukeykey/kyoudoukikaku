@@ -3,4 +3,6 @@ void attacktoe(player p,enemy e){
   anims.add(new damageanim(e.enemypos.x,e.enemypos.y,""+(p.attack-e.def)));
 }
 void knockbacktoe(player p,enemy e,float val){
+  e.hx=(e.enemypos.x-p.x)/dist(e.enemypos.x,e.enemypos.y,p.x,p.y)+val;
+  e.hy=(e.enemypos.y-p.y)/dist(e.enemypos.x,e.enemypos.y,p.x,p.y)+val;
 }

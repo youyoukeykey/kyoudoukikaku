@@ -10,7 +10,7 @@ class player extends people{//プレイヤー
     mp=10;
     speed=1;
     guard=1;
-    attack=1;
+    attack=10;
     x=0;
     y=0;
     direction=3;
@@ -55,11 +55,37 @@ class player extends people{//プレイヤー
     }
   }
   if(attacking){
+    float knockbackval=0.5;
     for(int i=0;i<teki.size();i++){
       enemy e=teki.get(i);
       if(dist(e.enemypos.x,e.enemypos.y,this.x,this.y)<2){
         switch(direction){
-          
+          case 0:
+          if(this.y<e.enemypos.y){
+            attacktoe(this,e);
+            knockbacktoe(this,e,knockbackval);
+          }
+          break;
+          case 1:
+          if(this.x<e.enemypos.x){
+            attacktoe(this,e);
+            knockbacktoe(this,e,knockbackval);
+          }
+          break;
+          case 2:
+          if(this.y>e.enemypos.y){
+            attacktoe(this,e);
+            knockbacktoe(this,e,knockbackval);
+          }
+          break;
+          case 3:
+          if(this.x>e.enemypos.x){
+            attacktoe(this,e);
+            knockbacktoe(this,e,knockbackval);
+          }
+          break;
+          default:
+          break;
         }
       }
     }
