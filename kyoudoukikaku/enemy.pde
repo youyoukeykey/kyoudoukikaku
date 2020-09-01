@@ -5,7 +5,7 @@ class enemy {
   int tate;
   boolean move;
   boolean oikake;
-  int hp;
+  int hp=20;
   int fc;
   int def=1;
   float hx=0;//ノックバックｘ

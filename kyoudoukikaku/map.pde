@@ -27,7 +27,6 @@ int cy(int y) {
 void opdraw(int x, int y) {
   background(255);
   op.map_draw((int)x, (int)y);
-  println("op");
 }
 void mapdraw(float x, float y) {
   background(255);
@@ -119,7 +118,7 @@ class Map {
     int x, y;
     x=0;
     y=0;//=0
-    println("aaa", x, _x, y, _y);
+    //println("aaa", x, _x, y, _y);
     x=floor(_x);
     y=floor(_y);
     float offsetx=x-(_x);
@@ -172,6 +171,9 @@ class Map {
       for(int i=0;i<anims.size();i++){
         eanim ee=anims.get(i);
         ee.draw((x-w/2)*chipSize-offsetx*chipSize,(y-h/2)*chipSize-offsety*chipSize);
+        if(ee.delete==1){
+          anims.remove(ee);
+        }
       }
     }
   }

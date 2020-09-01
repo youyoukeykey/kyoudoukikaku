@@ -27,7 +27,7 @@ class damageanim extends eanim{
     this.t=t;
   }
   void draw(float _x,float _y){
-    fill(255,0,0,toumei);
+    fill(255,255,255,toumei);
     textSize(32);//仮
     text(t,x*chipSize-(_x),y*chipSize-(_y));
     y-=0.1;

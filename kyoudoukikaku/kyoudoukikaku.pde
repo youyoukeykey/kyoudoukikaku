@@ -1,8 +1,9 @@
 String path;
 player p;
 ArrayList<enemy> teki=new ArrayList();
+UI ui;
 void setup(){
-  noiseSeed(1);
+  noiseSeed(1);//a
   size(700,700);
   String  path  =  sketchPath( ) ;
   p=new player();
@@ -12,6 +13,7 @@ void setup(){
   e.enemypos.x=10;
   e.enemypos.y=10;
   teki.add(e);
+  ui=new UI();
 }
 void draw(){
   background(255);
@@ -25,4 +27,5 @@ void draw(){
     keysyori();
   }
   animupdate();
+  ui.draw();
 }

@@ -2,7 +2,7 @@ class people{//継承という仕組みを用いてこれからステータス�
   float x,y;
   int hp;
   int mp;
-  int attack=10;
+  int attack;
   int guard;
   int speed;
   float hx=0;
@@ -14,10 +14,10 @@ class people{//継承という仕組みを用いてこれからステータス�
     if(!map.isblocked(floor(x+0.5)+hx,floor(y+0.5)+hy)){
       x+=nx;
       y+=ny;
-      println(y+ny);
+      //println(y+ny);
       return true;
     }
-    println("blocked");
+    //println("blocked");
     return false;
   }
   void knockback(){

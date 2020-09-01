@@ -4,7 +4,7 @@ void keysyori(){
    if(keyCode==UP){
     p.direction=2;
     p.move(0,-0.1);
-    println("up");
+    //println("up");
   }
   if(keyCode==RIGHT){
     p.direction=1;
