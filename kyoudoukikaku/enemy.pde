@@ -8,6 +8,7 @@ class enemy {
   int hp=20;
   int fc;
   int def=1;
+  int getexp;
   float hx=0;//ノックバックｘ
   float hy=0;//ノックバックｙ
   enemy() {

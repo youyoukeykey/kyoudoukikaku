@@ -7,7 +7,9 @@ class player extends people{//プレイヤー
   int flamec=10;
   player(){//ここはまだfeeling
     hp=10;
+    maxhp=10;
     mp=10;
+    maxexp=10;
     speed=1;
     guard=1;
     attack=3;
