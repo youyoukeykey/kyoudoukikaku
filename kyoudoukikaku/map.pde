@@ -1,6 +1,7 @@
 //まるまるコピペしました。
 final int chipSize = 32;
 PImage images;
+PImage title;
 int x=0, y=0;
 int w = width / chipSize;
 int h = height / chipSize;
@@ -71,6 +72,7 @@ class Map {
     loadImage("mountain.png"), 
     loadImage("crater.png")
   };
+  PImage title = loadImage("title.png");
   color[] chipColors={
     color(#130983), //deap_sea
     color(#62AAE3), //sea
@@ -195,7 +197,7 @@ class Map {
         }
       }
       if(df == 0){
-        print("compleate");
+        image(title,(width - 500)/2,(height-250)/2,500,250);
       }
     } else if (df == 1) {
       image(images[types[ix][iy]], (float)cx(ix), (float)cy(op_images_y[iy]), (float)chipSize, (float)chipSize);
