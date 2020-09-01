@@ -2,7 +2,7 @@ class people{//継承という仕組みを用いてこれからステータス�
   float x,y;
   int hp;
   int mp;
-  int attack;
+  int attack=10;
   int guard;
   int speed;
   float hx=0;
