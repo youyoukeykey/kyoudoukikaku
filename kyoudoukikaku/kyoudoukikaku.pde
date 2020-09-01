@@ -24,4 +24,5 @@ void draw(){
   if(keyp==true){
     keysyori();
   }
+  animupdate();
 }

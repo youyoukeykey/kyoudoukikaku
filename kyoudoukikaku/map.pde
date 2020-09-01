@@ -157,8 +157,6 @@ class Map {
         }
       }
     }
-
-
     if (MaOf == 1) {
       op_drop();
       count++;
