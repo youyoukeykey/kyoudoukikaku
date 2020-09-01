@@ -3,7 +3,7 @@ void attacktoe(player p,enemy e){
   anims.add(new damageanim(e.enemypos.x,e.enemypos.y,""+(p.attack-e.def)));
   if(e.hp<0){
     teki.remove(e);
-    p.exp+=500;
+    p.exp+=5;
     float cy=0;
     while(p.exp>=p.maxexp){
     anims.add(new damageanim(p.x,p.y+cy,"levelUP!",#EFF70C));
@@ -11,6 +11,8 @@ void attacktoe(player p,enemy e){
     p.maxexp*=1.5;
     p.maxhp*=1.5;
     p.hp=p.maxhp;
+    p.attack*=1.1;
+    p.guard*=1.1;
     cy-=10;
     }
   }

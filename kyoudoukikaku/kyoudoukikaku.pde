@@ -9,20 +9,18 @@ void setup() {
   p=new player();
   mapsetup();
   randomSeed(100);
+  for(int i=-0;i<60;i++){
   enemy e=new enemy();
-  e.enemypos.x=10;
-  e.enemypos.y=10;
+  e.enemypos.x=random(-60,60);
+  e.enemypos.y=random(-60,60);
   teki.add(e);
+  }
   ui=new UI();
 }
 void draw() {
   background(255);
   mapdraw(p.x, p.y);
   //pp.draw();
-  for (int i=0; i<teki.size(); i++) {
-    enemy t=teki.get(i);
-    t.run();
-  }
   if (keyp==true) {
     keysyori();
   }
@@ -30,4 +28,5 @@ void draw() {
   if (map.MaOf==0) {
     ui.draw();
   }
+  
 }
