@@ -1,6 +1,9 @@
 class people{//継承という仕組みを用いてこれからステータスを受け継ぎます
   float x,y;
   int hp;
+  int maxhp;
+  int maxexp;
+  int exp;
   int mp;
   int attack;
   int guard;

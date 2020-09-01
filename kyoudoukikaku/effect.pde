@@ -19,6 +19,7 @@ class damageanim extends eanim{
   float x,y;
   String t;
   float toumei=255;
+  color c=color(255,255,255);
   damageanim(){
   }
   damageanim(float x,float y,String t){
@@ -26,8 +27,14 @@ class damageanim extends eanim{
     this.y=y;
     this.t=t;
   }
+  damageanim(float x,float y,String t,color c){
+    this.x=x;
+    this.y=y;
+    this.t=t;
+    this.c=c;
+  }
   void draw(float _x,float _y){
-    fill(255,255,255,toumei);
+    fill(c,toumei);
     textSize(32);//仮
     text(t,x*chipSize-(_x),y*chipSize-(_y));
     y-=0.1;
