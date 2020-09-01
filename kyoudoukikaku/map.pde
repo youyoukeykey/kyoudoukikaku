@@ -138,6 +138,7 @@ class Map {
         if (MaOf == 0) {//map
           //fill(chipColors[type]);
           //rect(cx(ix), cy(iy), chipSize, chipSize);
+          frameRate(60);
           image(images[type], (float)cx(ix)+offsetx*chipSize, (float)cy(iy)+offsety*chipSize, (float)chipSize, (float)chipSize);
           if (p.x==x -h/2+ ix&&p.y== y -w/2+ iy) {//プレイヤーの位置に四角を描くタイミングで一緒にプレイヤーも描画
             //println("a");
@@ -202,14 +203,16 @@ class Map {
         }
       }
       if(df == 0){
+        frameRate(60);
         image(title,(width - 500)/2,(height-250)/2,500,250);
         fill(255,0,0);
         text(press,width/2,height-100);
       }
     } else if (df == 1) {
+      frameRate(300);
       image(images[types[ix][iy]], (float)cx(ix), (float)cy(op_images_y[iy]), (float)chipSize, (float)chipSize);
-      if (op_images_y[iy]<=iy) {
-        op_images_y[iy]+=5;
+      if (op_images_y[iy]<iy) {
+        op_images_y[iy]+=1;
       } else {
         op_nf[ix][iy]=0;
         op_images_y[iy]=0;
