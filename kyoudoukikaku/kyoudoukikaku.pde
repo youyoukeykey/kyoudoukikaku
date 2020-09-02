@@ -2,7 +2,9 @@ String path;
 player p;
 ArrayList<enemy> teki=new ArrayList();
 UI ui;
+PImage messy;
 void setup() {
+  messy=loadImage("messy.png");
   noiseSeed(1);//a
   size(700, 700);
   String  path  =  sketchPath( ) ;

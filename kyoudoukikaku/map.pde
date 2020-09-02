@@ -173,7 +173,7 @@ class Map {
          t.run();
         if (dist(t.enemypos.x, t.enemypos.y, x, y)<=10) {
           fill(255, 255, 0);
-          image(loadImage("messy.png").get(11,10,23,23),(t.enemypos.x-x+w/2)*chipSize+offsetx*chipSize, (t.enemypos.y-y+h/2)*chipSize+offsety*chipSize, chipSize, chipSize);
+          image(messy.get(11,10,23,23),(t.enemypos.x-x+w/2)*chipSize+offsetx*chipSize, (t.enemypos.y-y+h/2)*chipSize+offsety*chipSize, chipSize, chipSize);
         }
       }
       for(int i=0;i<anims.size();i++){
