@@ -5,7 +5,7 @@ class people{//継承という仕組みを用いてこれからステータス�
   int maxexp;
   int exp;
   int mp;
-  int attack;
+  float attack;
   int guard;
   int speed;
   float hx=0;

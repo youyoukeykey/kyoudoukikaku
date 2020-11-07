@@ -1,6 +1,6 @@
 void attacktoe(player p,enemy e){
-  e.hp-=p.attack-e.def;
-  anims.add(new damageanim(e.enemypos.x,e.enemypos.y,""+(p.attack-e.def)));
+  e.hp-=(int)p.attack-e.def;
+  anims.add(new damageanim(e.enemypos.x,e.enemypos.y,""+(int)(p.attack-e.def)));
   if(e.hp<0){
     teki.remove(e);
     p.exp+=5;
@@ -11,8 +11,8 @@ void attacktoe(player p,enemy e){
     p.maxexp*=1.5;
     p.maxhp*=1.5;
     p.hp=p.maxhp;
-    p.attack*=1.1;
-    p.guard*=1.1;
+    p.attack*=1.5;
+    p.guard*=1.5;
     cy-=10;
     }
   }
